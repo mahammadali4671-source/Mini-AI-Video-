@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="bn">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#101326">
+  <title>Mini AI Video — AI Video Studio</title>
+  <style>
+    :root{--bg:#0b1020;--panel:#141a30;--panel2:#1b2340;--text:#f5f7ff;--muted:#aab4d0;--accent:#8b5cf6;--accent2:#22d3ee;--line:#303958}
+    *{box-sizing:border-box}body{margin:0;background:radial-gradient(ellipse at top,#20244a 0,#0b1020 55%);color:var(--text);font-family:system-ui,-apple-system,"Noto Sans Bengali",sans-serif}
+    .wrap{max-width:1080px;margin:auto;padding:24px 16px 60px}.top{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}
+    .brand{display:flex;gap:12px;align-items:center}.logo{width:48px;height:48px;border-radius:15px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-size:24px;box-shadow:0 8px 30px #8b5cf655}
+    h1{font-size:clamp(25px,5vw,38px);margin:0;letter-spacing:-.5px}.sub{color:var(--muted);margin:4px 0 0;font-size:14px}
+    .pill{border:1px solid #3d496c;border-radius:999px;padding:8px 12px;color:#c6d0ee;font-size:12px}
+    .hero{padding:34px 0 24px}.hero h2{font-size:clamp(27px,6vw,46px);line-height:1.12;margin:0 0 12px;max-width:720px}.hero h2 span{background:linear-gradient(90deg,#c4b5fd,#67e8f9);color:transparent;background-clip:text}.hero p{color:var(--muted);max-width:700px;line-height:1.7;margin:0}
+    .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}.card{background:linear-gradient(180deg,#171e36ee,#11172aee);border:1px solid var(--line);border-radius:22px;padding:22px;box-shadow:0 16px 40px #0002}
+    .tabs{display:flex;gap:8px;margin-bottom:18px}.tab{border:1px solid var(--line);border-radius:12px;padding:10px 14px;background:#0e1427;color:var(--muted);cursor:pointer;font-weight:650}.tab.active{background:linear-gradient(135deg,#6d4ce8,#267eaa);color:white;border-color:transparent}
+    label{display:block;font-size:14px;font-weight:700;margin:15px 0 8px}textarea,input,select{width:100%;border:1px solid #354061;background:#0b1122;color:var(--text);border-radius:12px;padding:12px 13px;font:inherit;outline:none}textarea{min-height:130px;resize:vertical}textarea:focus,input:focus,select:focus{border-color:var(--accent2)}
+    .row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.hint{color:var(--muted);font-size:12px;line-height:1.6;margin-top:7px}
+    .filebox{border:1px dashed #536084;padding:16px;border-radius:14px;background:#0c1326}.filebox input{border:0;padding:6px 0;background:transparent}
+    .btn{width:100%;margin-top:18px;border:0;border-radius:14px;padding:14px 18px;background:linear-gradient(100deg,#8b5cf6,#0891b2);color:white;font-size:16px;font-weight:800;cursor:pointer}.btn:hover{filter:brightness(1.08)}.btn:disabled{opacity:.55;cursor:not-allowed}
+    .preview{min-height:310px;border:1px solid var(--line);border-radius:18px;background:linear-gradient(135deg,#11172c,#1b2340);display:grid;place-items:center;text-align:center;padding:20px;overflow:hidden}.preview .symbol{font-size:56px;margin-bottom:8px}.preview p{color:var(--muted);line-height:1.65;max-width:330px}.preview img,.preview video{width:100%;max-height:420px;object-fit:contain;border-radius:12px}
+    .status{display:none;margin-top:14px;padding:12px;border-radius:12px;background:#12283a;border:1px solid #24506a;color:#c7f2ff;line-height:1.6;font-size:13px}
+    .features{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:18px}.feature{border:1px solid var(--line);border-radius:16px;padding:15px;background:#11172a}.feature strong{display:block;margin:7px 0}.feature p{font-size:13px;color:var(--muted);line-height:1.5;margin:0}
+    .notice{font-size:12px;color:#c4cce0;line-height:1.7;margin-top:16px;padding:13px 15px;border-radius:12px;background:#25223a;border:1px solid #4c426f}
+    footer{text-align:center;color:#7f8aa9;font-size:12px;margin-top:26px}
+    @media(max-width:780px){.grid{grid-template-columns:1fr}.features{grid-template-columns:1fr}.hero{padding-top:28px}.card{padding:17px}.preview{min-height:230px}}
+    @media(max-width:420px){.row{grid-template-columns:1fr}.pill{width:100%;text-align:center}}
+  </style>
+</head>
+<body>
+  <main class="wrap">
+    <header class="top">
+      <div class="brand"><div class="logo">▶</div><div><h1>Mini AI Video</h1><p class="sub">আপনার সৃজনশীলতার AI ভিডিও স্টুডিও</p></div></div>
+      <div class="pill">ফ্রি প্ল্যান · দৈনিক লক্ষ্য: ১০টি ভিডিও</div>
+    </header>
+
+    <section class="hero">
+      <h2>আপনার আইডিয়াকে <span>ভিডিওতে</span> রূপ দিন</h2>
+      <p>বাংলা বা ইংরেজিতে দৃশ্যের বর্ণনা লিখুন, অথবা একটি ছবি বেছে নিন। ভিডিও জেনারেশন API যুক্ত হলে এখান থেকেই AI ভিডিও তৈরি ও ডাউনলোড করা যাবে।</p>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <div class="tabs">
+          <button class="tab active" id="textTab" type="button">✍️ লেখা থেকে ভিডিও</button>
+          <button class="tab" id="imageTab" type="button">🖼️ ছবি থেকে ভিডিও</button>
+        </div>
+        <form id="form">
+          <div id="promptWrap">
+            <label for="prompt">ভিডিওর বর্ণনা লিখুন</label>
+            <textarea id="prompt" placeholder="যেমন: গ্রামের রান্নাঘরে একজন রাঁধুনি মাটির চুলায় মাছের ঝোল রান্না করছেন, সিনেমাটিক আলো..."></textarea>
+          </div>
+          <div id="imageWrap" hidden>
+            <label for="imageInput">একটি ছবি আপলোড করুন</label>
+            <div class="filebox"><input id="imageInput" type="file" accept="image/*"><div class="hint">JPG, PNG বা WebP ছবি বেছে নিন।</div></div>
+            <label for="motion">ছবিতে কী ধরনের নড়াচড়া চান?</label>
+            <textarea id="motion" placeholder="যেমন: ক্যামেরা ধীরে সামনে এগোবে, চুলার ধোঁয়া উঠবে, চরিত্রটি নড়াচড়া করবে..."></textarea>
+          </div>
+          <div class="row">
+            <div><label for="duration">ভিডিওর দৈর্ঘ্য</label><select id="duration"><option value="10">১০ সেকেন্ড</option><option value="30">৩০ সেকেন্ড</option><option value="60">৬০ সেকেন্ড</option><option value="120" selected>২ মিনিট (১২০ সেকেন্ড)</option></select></div>
+            <div><label for="language">ভাষা</label><select id="language"><option>বাংলা</option><option>हिन्दी</option><option>English</option></select></div>
+          </div>
+          <label for="model">ভিডিও মডেল / পরিষেবা</label>
+          <select id="model"><option value="demo">ডেমো প্রিভিউ (API যুক্ত নয়)</option><option value="hosted">Hosted AI API (সার্ভার সেটআপ প্রয়োজন)</option><option value="open">Open-source model (GPU প্রয়োজন হতে পারে)</option></select>
+          <button class="btn" type="submit">✨ ভিডিও তৈরি করুন</button>
+          <div class="hint">এটি প্রাথমিক ওয়েবসাইটের ডেমো। বাস্তব AI ভিডিও তৈরি চালু করতে ব্যাকএন্ড ও একটি AI ভিডিও মডেল/API সংযোগ করতে হবে।</div>
+        </form>
+        <div class="status" id="status" role="status"></div>
+      </div>
+      <div class="card">
+        <label style="margin-top:0">ভিডিও প্রিভিউ</label>
+        <div class="preview" id="preview">
+          <div><div class="symbol">🎬</div><strong>আপনার ভিডিও এখানে দেখা যাবে</strong><p>প্রথমে লেখা লিখুন অথবা ছবি আপলোড করুন। ডেমো মোডে ছবি প্রিভিউ দেখা যাবে; বাস্তব AI ভিডিও তৈরির জন্য সার্ভার ও AI API সংযোগ দরকার।</p></div>
+        </div>
+        <a id="download" class="btn" href="#" download="mini-ai-video-preview.png" style="display:none;text-align:center;text-decoration:none">⬇️ প্রিভিউ ডাউনলোড করুন</a>
+        <div class="notice"><strong>ফ্রি প্ল্যান (প্রস্তাবিত):</strong> প্রতিদিন সর্বোচ্চ ১০টি ভিডিওর কোটা দেখানোর পরিকল্পনা। এই সীমা এখনো সার্ভারে কার্যকর নয়। আসল ভিডিও তৈরি ও দৈনিক কোটা কার্যকর করতে ব্যাকএন্ড, ব্যবহারকারী হিসাব, এবং উপযুক্ত AI ভিডিও API/মডেল সংযোগ করতে হবে। AI পরিষেবার ফ্রি সীমা অনুযায়ী ২ মিনিটের ভিডিও বা দৈনিক ১০টি ভিডিও নাও পাওয়া যেতে পারে। API key কখনো এই HTML ফাইলে রাখবেন না—সার্ভারে রাখতে হবে।</div>
+      </div>
+    </section>
+
+    <section class="features">
+      <div class="feature"><div>✍️</div><strong>Text to Video</strong><p>আপনার গল্প, রান্না বা কমেডির দৃশ্যের বর্ণনা থেকে ভিডিও তৈরির ফর্ম।</p></div>
+      <div class="feature"><div>🖼️</div><strong>Image to Video</strong><p>ছবি আপলোড করে মোশন নির্দেশনা দেওয়ার সুবিধা।</p></div>
+      <div class="feature"><div>🎁</div><strong>দৈনিক ফ্রি কোটা</strong><p>প্রস্তাবিত ফ্রি প্ল্যান: প্রতিদিন সর্বোচ্চ ১০টি ভিডিও; ব্যাকএন্ড যুক্ত হলে প্রকৃত কোটা যাচাই করা যাবে।</p></div><div class="feature"><div>📱</div><strong>মোবাইল-ফ্রেন্ডলি</strong><p>অ্যান্ড্রয়েড ফোনসহ ছোট-বড় স্ক্রিনে ব্যবহার করার উপযোগী ডিজাইন।</p></div>
+    </section>
+    <footer>© 2026 Mini AI Video · Demo interface</footer>
+  </main>
+<script>
+  const textTab=document.getElementById('textTab'), imageTab=document.getElementById('imageTab');
+  const promptWrap=document.getElementById('promptWrap'), imageWrap=document.getElementById('imageWrap');
+  const imageInput=document.getElementById('imageInput'), preview=document.getElementById('preview');
+  const statusBox=document.getElementById('status'), download=document.getElementById('download');
+  let mode='text', currentObjectUrl=null;
+  function setMode(next){
+    mode=next; textTab.classList.toggle('active',mode==='text'); imageTab.classList.toggle('active',mode==='image');
+    promptWrap.hidden=mode!=='text'; imageWrap.hidden=mode!=='image';
+    statusBox.style.display='none';
+  }
+  textTab.addEventListener('click',()=>setMode('text')); imageTab.addEventListener('click',()=>setMode('image'));
+  imageInput.addEventListener('change',()=>{
+    const file=imageInput.files && imageInput.files[0]; if(!file) return;
+    if(currentObjectUrl) URL.revokeObjectURL(currentObjectUrl);
+    currentObjectUrl=URL.createObjectURL(file);
+    preview.innerHTML=''; const img=document.createElement('img'); img.src=currentObjectUrl; img.alt='আপলোড করা ছবির প্রিভিউ'; preview.appendChild(img);
+    download.style.display='none';
+  });
+  document.getElementById('form').addEventListener('submit',(e)=>{
+    e.preventDefault();
+    statusBox.style.display='block';
+    const model=document.getElementById('model').value;
+    if(mode==='text' && !document.getElementById('prompt').value.trim()){
+      statusBox.textContent='প্রথমে ভিডিওর বর্ণনা লিখুন।'; return;
+    }
+    if(mode==='image' && !(imageInput.files && imageInput.files[0])){
+      statusBox.textContent='প্রথমে একটি ছবি আপলোড করুন।'; return;
+    }
+    if(model==='demo'){
+      statusBox.textContent='ডেমো মোড: ফর্মটি কাজ করছে, কিন্তু এখানে বাস্তব AI ভিডিও তৈরি হয় না। আসল ভিডিও তৈরির জন্য ব্যাকএন্ডে AI ভিডিও API বা মডেল সংযুক্ত করতে হবে।';
+    } else if(model==='hosted'){
+      statusBox.textContent='Hosted API নির্বাচন করেছেন। সার্ভার ব্যাকএন্ড, নিরাপদ API key, কাজের queue এবং ভিডিও স্টোরেজ যুক্ত করার পর এই বাটন ভিডিও তৈরি করতে পারবে।';
+    } else {
+      statusBox.textContent='Open-source মডেল নির্বাচন করেছেন। উপযুক্ত মডেল, GPU/হোস্টিং এবং ব্যাকএন্ড সেটআপের পর ভিডিও তৈরি চালু করা যাবে।';
+    }
+  });
+</script>
+</body>
+</html>
